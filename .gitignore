@@ -1,0 +1,13 @@
+target/
+.idea
+*.iml
+.log
+.DS_Store
+build/
+lib/ 
+
+# node, webpack
+node_modules/
+/npm-debug.log
+
+src/main/frontend/package-lock.json
