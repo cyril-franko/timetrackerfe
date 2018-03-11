@@ -1,0 +1,79 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: TimeTracker API
+  description: A simple API to view timetracker data
+
+schemes:
+  - http
+host: simple.api
+#basePath: "/rest"
+
+paths:
+# =========
+# records
+# =========
+  /records:
+    get:
+      tags:
+        - records
+      summary: Get records
+      description: Returns a list of record
+      operationId: getRecords
+      parameters:
+      - name: email
+        in: query
+        required: false
+        type: string
+      - name: offset
+        in: query
+        description: Index of the first codelist to return
+        required: true
+        type: integer
+      - name: length
+        in: query
+        description: Number of codelists to return
+        required: true
+        type: integer
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Track"
+
+    post:
+      tags:
+       - records
+      summary: A sample survey.
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: email
+          type: string
+          description: E-mail
+        - in: formData
+          name: start
+          type: string
+        - in: formData
+          name: end
+          type: string
+      responses:
+        200:
+          description: OK
+
+definitions:
+  Track:
+    type: object
+    properties:
+      email:
+         type: string
+      start:
+         type: string
+         format: datetime
+      end:
+        type: string
+        format: datetime

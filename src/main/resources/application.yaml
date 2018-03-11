@@ -1,0 +1,16 @@
+server:
+  port: 8081
+welcome:
+  message: Hello ! Welcome to the TimeTracker App
+
+datepatern:
+  fromTimetracker: "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+  toShow: "yyyy-MM-dd HH:mm"
+  input: "d.M.yyyy HH:mm"
+main:
+  trackperlist: 15
+
+integration:
+  timetracker:
+    base-path: http://localhost:8080
+

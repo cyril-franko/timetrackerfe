@@ -1,0 +1,15 @@
+h1{
+	color:#0000FF;
+}
+
+h2{
+	color:#FF0000;
+}
+.records TH, TD{
+	border: 1px solid lightgray;
+	padding: 5px 10px 5px 10px;
+
+}
+.records TH{
+	background-color: burlywood;
+}

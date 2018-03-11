@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>TimeTracker Application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<link rel="stylesheet" th:href="@{/css/main.css}"
+	href="../../css/main.css" />
+
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">TimeTracker</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/" th:text="#{btn.search}"></a></li>
+					<li><a th:href="newtrack" th:text="#{btn.add.record}"></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<div class="starter-template">
+			<h1 th:text="#{appName}"></h1>
+			<h2 th:if="${records!=null}">
+				<span th:if="${records.isEmpty()}" th:text="#{info.no_recods}  + ${email}"></span>
+			</h2>
+			<h2 th:if="${message!=null}">
+				<span th:text="${message}"></span>
+			</h2>
+		</div>
+
+		<div>
+
+			<form action="#" th:action="${(#mvc.url('TC#search')).build()}" th:object="${trackform}" method="post">
+				<span th:text="'Records for e-mail: '"></span>
+				<input type="email" name="email" placeholder="your@email.com" required="required" th:value="${email}"/>
+				<input type="submit" value="Search" />
+			</form>
+
+		</div>
+		<div th:if="${records!=null}">
+
+			<table th:if="${records.size()>0}" class="records">
+				<thead>
+				<tr>
+					<th></th>
+					<th>Start</th>
+					<th>End</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="rc, stat : ${records}">
+					<td th:text="${stat.index}+1+${offset}">.</td>
+					<td th:text="${{rc.start}}"></td>
+					<td th:text="${{rc.end}}"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td align="right"><form th:if="${prev!=null}" action="#" th:action="${(#mvc.url('TC#search')).build()}" th:object="${trackform}" method="post">
+						<input type="hidden" name="email" th:value="${email}"/>
+						<input type="hidden" name="offset" th:value="${prev}"/>
+						<input type="submit" value="PREV" />
+					</form></td>
+					<td><form th:if="${next}"  action="#" th:action="${(#mvc.url('TC#search')).build()}" th:object="${trackform}" method="post">
+						<input type="hidden" name="email" th:value="${email}"/>
+						<input type="hidden" name="offset" th:value="${next}"/>
+						<input type="submit" value="NEXT" />
+					</form></td>
+				</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+	<!-- /.container -->
+
+	<script type="text/javascript" src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

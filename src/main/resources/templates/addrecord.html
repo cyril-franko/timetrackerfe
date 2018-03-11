@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>TimeTracker Application</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" type="text/css"
+		  href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+	<link rel="stylesheet" th:href="@{/css/main.css}"
+		  href="../../css/main.css" />
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">TimeTracker</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/">Search</a></li>
+				<li class="active"><a th:href="newtrack">Add new record</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container">
+
+	<div class="starter-template">
+		<h1>Add new record to timetracker</h1>
+		<h2 th:if="${message!=null}">
+			<span th:text="${message}"></span>
+		</h2>
+	</div>
+
+	<div>
+		<form action="#" th:action="@{/newtrack}" th:object="${trackform}" method="post">
+			<table>
+				<tr>
+					<td>Email:</td>
+					<td><input type="email" th:field="*{email}" placeholder="your@email.com" required="required"/>
+						<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error message</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Start:</td>
+					<td><input type="text" th:field="*{start}" th:placeholder="${inputPh}" required="required"/>
+						<span th:if="${#fields.hasErrors('start')}" th:errors="*{start}">Start error message</span>
+					</td>
+				</tr>
+				<tr>
+					<td>End:</td>
+					<td><input type="text" th:field="*{end}"  th:placeholder="${inputPh}"  required="required"/>
+						<span th:if="${#fields.hasErrors('end')}" th:errors="*{end}">End error message</span>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><button type="reset">Reset</button><button type="submit">Submit post</button></td>
+				</tr>
+			</table>
+
+		</form>
+
+	</div>
+</div>
+
+<script type="text/javascript" src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
