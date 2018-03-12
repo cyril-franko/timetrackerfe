@@ -26,6 +26,7 @@ We can setup address where is runnig timetracker backend through integration.tim
 
 
 Prerequisite to fully functionaly frontend application Timetracker FE is run backend of timetracker.
+
 TimeTracker is a legacy application that keeps track of employee work times. The application is deployed as docker container, whose docker image is available at the following URL along with some samples calls:
 
 https://hub.docker.com/r/alirizasaral/timetracker/
