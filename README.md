@@ -34,9 +34,11 @@ Prerequisite to fully functionaly frontend application Timetracker FE is run bac
 1.) Pull  timetracker from 
 
 https://hub.docker.com/r/alirizasaral/timetracker/
+
 $ docker pull alirizasaral/timetracker
 
 Run timetracker backend with command:
+
 $ docker run -d -p 8080:8080 --name timetracker --network tracker-net alirizasaral/timetracker:1
 
 
