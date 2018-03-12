@@ -11,7 +11,6 @@ Build the application
 1.) goto to the root directory of project
 
 2.) run
-
 $ mvn clean compile package
 
 
