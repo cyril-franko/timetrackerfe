@@ -11,17 +11,20 @@ Build the application
 1.) goto to the root directory of project
 
 2.) run
+
 $ mvn clean compile package
 
 
 Build docker image
 
 3.) run
+
 $ docker network create tracker-net
 $ docker build --name timetrackerfe --network tracker-net cyrof/timetracker .
 docker build -t cyrof/timetracker  .
 
 Run application in docker container
+
 $ docker run -d -p 8081:8081 --name timetrackerfe  --network tracker-net -e JAVA_OPTS="-Dintegration.timetracker.base-path=http://timetracker:8080" cyrof/timetracker
 
 We can setup address where is runnig timetracker backend through integration.timetracker.base-path
